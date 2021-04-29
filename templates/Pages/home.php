@@ -40,6 +40,8 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
+    <?= $this->Html->script('ol') ?>
+    <?= $this->Html->css('ol') ?>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 
@@ -212,8 +214,27 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
                         <a target="_blank" rel="noopener" href="https://training.cakephp.org/">CakePHP Training</a>
                     </div>
                 </div>
+                <hr>
+                <div class="row">
+                    <div class="map" id="map" style="height:320px;width: 100%;"></div>
+                </div>
             </div>
         </div>
     </main>
 </body>
 </html>
+
+<script type="text/javascript">
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([37.41, 8.82]),
+          zoom: 4
+        })
+      });
+</script>
